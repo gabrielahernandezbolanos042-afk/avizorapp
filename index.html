@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Avizor - Conecta. Informa. Avanza.</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+  <script type="importmap">
+{
+  "imports": {
+    "react": "https://aistudiocdn.com/react@^19.2.0",
+    "react/": "https://aistudiocdn.com/react@^19.2.0/"
+  }
+}
+</script>
+<link rel="stylesheet" href="/index.css">
+</head>
+  <body>
+    <div class="bg-[#0D1B2A] text-gray-200 antialiased">
+      <!-- Login Modal -->
+      <div id="login-modal" class="fixed inset-0 bg-black bg-opacity-75 flex items-center justify-center z-50 transition-opacity duration-300 opacity-0 pointer-events-none" role="dialog" aria-modal="true" aria-labelledby="login-modal-title">
+        <div class="bg-[#0D1B2A] rounded-lg shadow-2xl p-8 w-full max-w-md m-4 relative border border-gray-700" onclick="event.stopPropagation()">
+          <button class="close-login-modal absolute top-4 right-4 text-gray-400 hover:text-white transition-colors" aria-label="Cerrar modal">
+            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
+          </button>
+          <h2 id="login-modal-title" class="text-2xl font-bold text-white text-center mb-6">Iniciar Sesión en Avizor</h2>
+          <form id="login-form" class="space-y-6">
+            <div>
+              <label for="login-email" class="block text-sm font-medium text-gray-300 mb-2">Correo Electrónico</label>
+              <input type="email" id="login-email" required class="w-full bg-gray-800 border border-gray-700 rounded-lg px-3 py-2 text-white focus:outline-none focus:ring-2 focus:ring-[#00BFA6]" placeholder="tu@email.com">
+            </div>
+            <div>
+              <label for="login-password" class="block text-sm font-medium text-gray-300 mb-2">Contraseña</label>
+              <input type="password" id="login-password" required class="w-full bg-gray-800 border border-gray-700 rounded-lg px-3 py-2 text-white focus:outline-none focus:ring-2 focus:ring-[#00BFA6]" placeholder="********">
+            </div>
+            <div class="text-right">
+              <a href="#" class="text-sm text-gray-400 hover:text-[#00BFA6] transition-colors">¿Olvidaste tu Contraseña?</a>
+            </div>
+            <div>
+              <button type="submit" class="w-full bg-[#00BFA6] text-[#0D1B2A] font-bold py-3 px-8 rounded-lg shadow-md hover:shadow-lg hover:scale-105 transform transition-all duration-300">
+                Iniciar Sesión
+              </button>
+            </div>
+          </form>
+          <div class="mt-6 text-center">
+            <p class="text-gray-400">
+              ¿No tienes una cuenta? <a href="#" class="font-semibold text-[#00BFA6] hover:underline">Nuevo Registro</a>
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Header -->
+      <header class="bg-[#0D1B2A] relative overflow-hidden">
+        <div class="container mx-auto px-6 py-4">
+          <div class="flex items-center justify-between">
+            <div class="text-2xl font-bold text-white"><a href="#">Avizor</a></div>
+            <nav class="hidden md:flex items-center space-x-8">
+              <a href="#features" class="text-gray-300 hover:text-[#00BFA6] transition-colors duration-300">Características</a>
+              <a href="#about" class="text-gray-300 hover:text-[#00BFA6] transition-colors duration-300">Sobre la App</a>
+              <a href="#testimonials" class="text-gray-300 hover:text-[#00BFA6] transition-colors duration-300">Testimonios</a>
+              <a href="#contact" class="text-gray-300 hover:text-[#00BFA6] transition-colors duration-300">Contacto</a>
+              <button class="open-login-modal border border-[#00BFA6] text-[#00BFA6] font-semibold py-2 px-4 rounded-lg hover:bg-[#00BFA6] hover:text-[#0D1B2A] transition-all duration-300">Iniciar Sesión</button>
+            </nav>
+            <div class="md:hidden">
+              <button id="mobile-menu-button" class="text-white focus:outline-none">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path></svg>
+              </button>
+            </div>
+          </div>
+          <div id="mobile-menu" class="hidden md:hidden mt-4">
+            <nav class="flex flex-col space-y-2 items-start">
+              <a href="#features" class="text-gray-300 hover:text-[#00BFA6] transition-colors duration-300">Características</a>
+              <a href="#about" class="text-gray-300 hover:text-[#00BFA6] transition-colors duration-300">Sobre la App</a>
+              <a href="#testimonials" class="text-gray-300 hover:text-[#00BFA6] transition-colors duration-300">Testimonios</a>
+              <a href="#contact" class="text-gray-300 hover:text-[#00BFA6] transition-colors duration-300">Contacto</a>
+              <button class="open-login-modal mt-2 border border-[#00BFA6] text-[#00BFA6] font-semibold py-2 px-4 rounded-lg hover:bg-[#00BFA6] hover:text-[#0D1B2A] transition-all duration-300 w-full text-left">Iniciar Sesión</button>
+            </nav>
+          </div>
+        </div>
+
+        <div class="container mx-auto px-6 py-16 md:py-24 text-center">
+          <h1 class="text-4xl md:text-6xl font-extrabold text-white leading-tight">Conecta. Informa.<span class="text-[#00BFA6]"> Avizor.</span></h1>
+          <p class="mt-4 text-lg md:text-xl text-gray-300 max-w-2xl mx-auto">La comunicación escolar, reinventada. Mantente al día con avisos y eventos importantes en tiempo real.</p>
+          <div class="mt-8 flex justify-center">
+            <a href="#contact" class="bg-[#00BFA6] text-[#0D1B2A] font-bold py-3 px-8 rounded-lg shadow-md hover:shadow-lg hover:scale-105 transform transition-all duration-300">Regístrate Ahora</a>
+          </div>
+          <div class="mt-12 md:mt-20 flex justify-center">
+            <div class="relative mx-auto border-gray-800 dark:border-gray-800 bg-gray-800 border-[14px] rounded-[2.5rem] h-[600px] w-[300px] shadow-xl">
+              <div class="w-[148px] h-[18px] bg-gray-800 top-0 rounded-b-[1rem] left-1/2 -translate-x-1/2 absolute"></div>
+              <div class="h-[46px] w-[3px] bg-gray-800 absolute -start-[17px] top-[124px] rounded-s-lg"></div>
+              <div class="h-[46px] w-[3px] bg-gray-800 absolute -start-[17px] top-[178px] rounded-s-lg"></div>
+              <div class="h-[64px] w-[3px] bg-gray-800 absolute -end-[17px] top-[142px] rounded-e-lg"></div>
+              <div class="rounded-[2rem] overflow-hidden w-full h-full bg-[#0D1B2A] p-4 flex flex-col text-white">
+                <div class="flex justify-between items-center mb-4">
+                  <span class="text-xl font-bold text-[#00BFA6]">Avizor</span>
+                  <div class="w-6 h-6 rounded-full bg-gray-600"></div>
+                </div>
+                <div class="space-y-3 overflow-y-auto">
+                  <div class="bg-gray-700/50 p-3 rounded-lg"><h3 class="font-semibold text-sm">Reunión de Padres</h3><p class="text-xs text-gray-400">Jueves 18, 19:00hs - Salón Principal.</p></div>
+                  <div class="bg-gray-700/50 p-3 rounded-lg"><h3 class="font-semibold text-sm">¡Día de Deportes!</h3><p class="text-xs text-gray-400">Viernes 19, no olvidar traer ropa cómoda.</p></div>
+                  <div class="bg-[#00BFA6]/20 p-3 rounded-lg border border-[#00BFA6]"><h3 class="font-semibold text-sm text-[#00BFA6]">URGENTE: Suspensión de clases</h3><p class="text-xs text-gray-300">Se suspenden las clases del turno mañana por alerta meteorológica.</p></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </header>
+
+      <main>
+        <section id="features" class="py-20 bg-opacity-20 bg-gray-800">
+          <div class="container mx-auto px-6">
+            <div class="text-center mb-12"><h2 class="text-3xl md:text-4xl font-bold text-white">¿Por qué Avizor?</h2><p class="text-lg text-gray-400 mt-2">Todo lo que necesitas para una comunicación escolar fluida y eficaz.</p></div>
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+              <div class="bg-gray-800/50 p-6 rounded-lg border border-transparent hover:border-[#00BFA6] hover:shadow-lg hover:shadow-[#00bfa6]/10 transform hover:-translate-y-1 transition-all duration-300"><div class="text-4xl mb-4">⚡️</div><h3 class="text-xl font-bold text-white mb-2">Notificaciones Instantáneas</h3><p class="text-gray-400">Recibe alertas en tiempo real sobre eventos, calificaciones y comunicados urgentes. Nunca te pierdas una actualización importante.</p></div>
+              <div class="bg-gray-800/50 p-6 rounded-lg border border-transparent hover:border-[#00BFA6] hover:shadow-lg hover:shadow-[#00bfa6]/10 transform hover:-translate-y-1 transition-all duration-300"><div class="text-4xl mb-4">💬</div><h3 class="text-xl font-bold text-white mb-2">Comunicación Directa</h3><p class="text-gray-400">Un canal seguro y directo para conectar a padres, docentes y estudiantes, facilitando la colaboración y resolviendo dudas al instante.</p></div>
+              <div class="bg-gray-800/50 p-6 rounded-lg border border-transparent hover:border-[#00BFA6] hover:shadow-lg hover:shadow-[#00bfa6]/10 transform hover:-translate-y-1 transition-all duration-300"><div class="text-4xl mb-4">📅</div><h3 class="text-xl font-bold text-white mb-2">Calendario Integrado</h3><p class="text-gray-400">Accede fácilmente al calendario escolar, consulta fechas de exámenes, eventos y feriados. Todo organizado en un solo lugar.</p></div>
+            </div>
+          </div>
+        </section>
+        <section id="about" class="py-20">
+          <div class="container mx-auto px-6">
+            <div class="flex flex-col md:flex-row items-center gap-12">
+              <div class="md:w-1/2"><div class="w-full h-80 bg-gray-800 rounded-lg flex items-center justify-center"><img src="https://picsum.photos/500/320?grayscale" alt="Ilustración de la app" class="rounded-lg object-cover w-full h-full" /></div></div>
+              <div class="md:w-1/2 text-center md:text-left"><h2 class="text-3xl md:text-4xl font-bold text-white">Nuestra Misión: Unir a la Comunidad Educativa</h2><p class="text-gray-300 mt-4 mb-8">En Avizor, creemos que una comunicación transparente y ágil es la base del éxito estudiantil. Nuestra misión es derribar las barreras de comunicación, creando un ecosistema donde padres, estudiantes y docentes colaboren de forma activa para un mejor futuro educativo.</p><a href="#" class="bg-[#00BFA6] text-[#0D1B2A] font-bold py-3 px-8 rounded-lg shadow-md hover:shadow-lg hover:scale-105 transform transition-all duration-300">Únete a la lista de espera</a></div>
+            </div>
+          </div>
+        </section>
+        <section id="testimonials" class="py-20 bg-opacity-20 bg-gray-800">
+          <div class="container mx-auto px-6">
+            <div class="text-center mb-12"><h2 class="text-3xl md:text-4xl font-bold text-white">Lo que dicen de nosotros</h2><p class="text-lg text-gray-400 mt-2">Opiniones de quienes ya forman parte de la comunidad Avizor.</p></div>
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+              <div class="bg-gray-800/50 p-6 rounded-lg shadow-lg"><p class="text-gray-300 italic">"Finalmente una app que centraliza todo. Ya no tengo que revisar mails, grupos de WhatsApp y el cuaderno de mi hijo. ¡Un alivio!"</p><div class="mt-4"><p class="font-bold text-white">Laura Gómez</p><p class="text-sm text-[#00BFA6]">Madre</p></div></div>
+              <div class="bg-gray-800/50 p-6 rounded-lg shadow-lg"><p class="text-gray-300 italic">"Me permite enviar comunicados masivos en segundos. La confirmación de lectura es una función clave para asegurar que todos están informados."</p><div class="mt-4"><p class="font-bold text-white">Carlos Fernandez</p><p class="text-sm text-[#00BFA6]">Profesor</p></div></div>
+              <div class="bg-gray-800/50 p-6 rounded-lg shadow-lg"><p class="text-gray-300 italic">"Sé exactamente cuándo tengo exámenes y entregas de trabajos. Me ayuda a organizarme mucho mejor y no olvidarme de nada."</p><div class="mt-4"><p class="font-bold text-white">Sofía Martinez</p><p class="text-sm text-[#00BFA6]">Estudiante</p></div></div>
+            </div>
+          </div>
+        </section>
+        <section id="contact" class="py-20">
+          <div class="container mx-auto px-6">
+            <div class="text-center mb-12"><h2 class="text-3xl md:text-4xl font-bold text-white">¿Interesado? Contáctanos</h2><p class="text-lg text-gray-400 mt-2">Déjanos tu mensaje y sé de los primeros en probar Avizor.</p></div>
+            <div class="max-w-xl mx-auto">
+              <div id="success-message" class="hidden text-center text-lg text-[#00BFA6]"><p>¡Gracias por tu mensaje! Nos pondremos en contacto pronto.</p></div>
+              <div id="form-container">
+                <form id="contact-form" class="space-y-6">
+                  <div><label for="name" class="block text-sm font-medium text-gray-300 mb-2">Nombre</label><input type="text" id="name" name="name" required class="w-full bg-gray-800 border border-gray-700 rounded-lg px-3 py-2 text-white focus:outline-none focus:ring-2 focus:ring-[#00BFA6]"></div>
+                  <div><label for="email" class="block text-sm font-medium text-gray-300 mb-2">Correo Electrónico</label><input type="email" id="email" name="email" required class="w-full bg-gray-800 border border-gray-700 rounded-lg px-3 py-2 text-white focus:outline-none focus:ring-2 focus:ring-[#00BFA6]"></div>
+                  <div><label for="message" class="block text-sm font-medium text-gray-300 mb-2">Mensaje</label><textarea id="message" name="message" rows="4" required class="w-full bg-gray-800 border border-gray-700 rounded-lg px-3 py-2 text-white focus:outline-none focus:ring-2 focus:ring-[#00BFA6]"></textarea></div>
+                  <div class="text-center"><button type="submit" class="w-full md:w-auto bg-[#00BFA6] text-[#0D1B2A] font-bold py-3 px-8 rounded-lg shadow-md hover:shadow-lg hover:scale-105 transform transition-all duration-300">Enviar Mensaje</button></div>
+                </form>
+              </div>
+            </div>
+          </div>
+        </section>
+      </main>
+
+      <footer class="bg-gray-900/50">
+        <div class="container mx-auto px-6 py-8">
+          <div class="flex flex-col items-center sm:flex-row sm:justify-between">
+            <p class="text-sm text-gray-400">© 2025 Avizor. Todos los derechos reservados.</p>
+            <div class="flex items-center space-x-4 mt-4 sm:mt-0">
+              <a href="#" class="text-gray-400 hover:text-[#00BFA6] transition-colors duration-300"><svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M22 12c0-5.523-4.477-10-10-10S2 6.477 2 12c0 4.991 3.657 9.128 8.438 9.878v-6.987h-2.54V12h2.54V9.797c0-2.506 1.492-3.89 3.777-3.89 1.094 0 2.238.195 2.238.195v2.46h-1.26c-1.243 0-1.63.771-1.63 1.562V12h2.773l-.443 2.89h-2.33v6.988C18.343 21.128 22 16.991 22 12z" clip-rule="evenodd" /></svg></a>
+              <a href="#" class="text-gray-400 hover:text-[#00BFA6] transition-colors duration-300"><svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path d="M8.29 20.251c7.547 0 11.675-6.253 11.675-11.675 0-.178 0-.355-.012-.53A8.348 8.348 0 0022 5.92a8.19 8.19 0 01-2.357.646 4.118 4.118 0 001.804-2.27 8.224 8.224 0 01-2.605.996 4.107 4.107 0 00-6.993 3.743 11.65 11.65 0 01-8.457-4.287 4.106 4.106 0 001.27 5.477A4.072 4.072 0 012.8 9.71v.052a4.105 4.105 0 003.292 4.022 4.095 4.095 0 01-1.853.07 4.108 4.108 0 003.834 2.85A8.233 8.233 0 012 18.407a11.616 11.616 0 006.29 1.84" /></svg></a>
+              <a href="#" class="text-gray-400 hover:text-[#00BFA6] transition-colors duration-300"><svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M12.315 2c2.43 0 2.784.013 3.808.06 1.064.049 1.791.218 2.427.465a4.902 4.902 0 011.772 1.153 4.902 4.902 0 011.153 1.772c.247.636.416 1.363.465 2.427.048 1.024.06 1.378.06 3.808s-.012 2.784-.06 3.808c-.049 1.064-.218 1.791-.465 2.427a4.902 4.902 0 01-1.153 1.772 4.902 4.902 0 01-1.772 1.153c-.636.247-1.363.416-2.427.465-1.024.048-1.378.06-3.808.06s-2.784-.012-3.808-.06c-1.064-.049-1.791-.218-2.427-.465a4.902 4.902 0 01-1.772-1.153 4.902 4.902 0 01-1.153-1.772c-.247-.636-.416-1.363-.465-2.427-.048-1.024-.06-1.378-.06-3.808s.012-2.784.06-3.808c.049-1.064.218-1.791.465-2.427a4.902 4.902 0 011.153-1.772A4.902 4.902 0 016.08 2.525c.636-.247 1.363-.416 2.427-.465C9.53 2.013 9.884 2 12.315 2zM12 8.118c-2.136 0-3.868 1.732-3.868 3.868s1.732 3.868 3.868 3.868 3.868-1.732 3.868-3.868-1.732-3.868-3.868-3.868zm0 6.162c-1.263 0-2.294-1.03-2.294-2.294s1.03-2.294 2.294-2.294 2.294 1.03 2.294 2.294-1.03 2.294-2.294 2.294zm4.762-6.525a1.2 1.2 0 100 2.4 1.2 1.2 0 000-2.4z" clip-rule="evenodd" /></svg></a>
+              <a href="#" class="text-gray-400 hover:text-[#00BFA6] transition-colors duration-300"><svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg></a>
+            </div>
+            <div class="mt-4 sm:mt-0"><a href="#" class="text-sm text-gray-400 hover:text-white">Política de Privacidad</a></div>
+          </div>
+        </div>
+      </footer>
+    </div>
+    <script type="module" src="/index.tsx"></script>
+  </body>
+</html>
